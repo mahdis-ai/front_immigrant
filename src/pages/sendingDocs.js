@@ -1,8 +1,9 @@
-import React from "react";
+import React , { useState ,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-
+import { useHistory } from 'react-router-dom';
+import axios from "axios";
 
 
 var x ="";
@@ -13,6 +14,36 @@ function ChooseFile() {
 }
 function App() {
   
+  const [selectedFile, setSelectedFile] = useState();
+	const [isFilePicked, setIsFilePicked] = useState(false);
+  const history = useHistory();
+  const changeHandler = (event) => {
+
+		setSelectedFile(event.target.files[0]);
+
+		setIsFilePicked(true);
+
+	};
+
+	const handleSubmission=(event) =>{
+    event.preventDefault();
+    const formData = new FormData();
+		formData.append('FILES', selectedFile);
+    axios.post("http://localhost:8000/reservation/sendingdocs", formData)
+    .then((response) => {
+
+      console.log(response);
+      
+
+    })
+
+    .catch((error) => {
+
+      console.error('Error:', error);
+
+    });
+
+	}
 
   return (
     
@@ -43,19 +74,24 @@ function App() {
 >
 
 
-<h1 style={{color: "#ffda74"}}>ارسال مدارک</h1>
-<h5 style={{color: 'lightgray'}}>تمام مدارک مهاجرتیت رو اسکن کن و همه رو تو یه فایل زیپ قرار بده و تو این صفحه ارسال کن</h5>
+<h1 style={{color: "#ffda74",marginTop:"150px"}}>ارسال مدارک</h1>
+<h5 style={{color: 'lightgray',marginTop: '30px'}}>تمام مدارک مهاجرتیت رو اسکن کن و همه رو تو یه فایل زیپ قرار بده و تو این صفحه ارسال کن</h5>
+<input style={{height:"70px",border:"10"}}type="file" name="file" onChange={changeHandler} />
+			{isFilePicked ? (
 
-      <Button
-  onClick={() => {
-    // const txt = `پرداخت موفقیت آمیز بود .نوبت شما : ${value}`;
-    // alert(txt);
-    
-    ReactDOM.render(<ChooseFile />, document.getElementById('root'));
-  }}
+				<div>
+					<p style={{color:"#FFFF00",marginBottom:"2px"}}>Filename: {selectedFile.name}</p>
+				</div>
+
+			) : (
+
+				<p>Select a file to show details</p>
+
+			)}
+      <Button 
+  onClick={handleSubmission}
   size="lg"
->
-برای ارسال مدارک کلیک کن
+>submit
 </Button>
 
 {/* <p>{`نوبت شما : ${appointment}`}</p> */}

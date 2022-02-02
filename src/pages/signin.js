@@ -4,7 +4,6 @@ import { Button} from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from "axios";
-import http from "../http-common";
 var Link = require('react-router').Link;
 
 // import { BrowserRouter as Router, Switch, RouteوRedirect } from 'react-router-dom';

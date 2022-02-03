@@ -20,36 +20,131 @@ var appointment ="";
 
 
 function Fnc() {
-  
-    return (
-    
-          <div
-          style={{
-           
-            display: 'flex',
-            justifyContent: 'Center',
-            alignItems: 'Center',
-            height: '100vh',
-                  
-          }}
-        >
-          
-         <div 
-         style={{
-            
+  return (
+
+
+
+
+
+      
+    <div style={{
+                    
+                        
+                        
+                    
       textAlign: 'center',    
-        
+      marginTop: "15%",
+          
+        }}>
+
+        <h3>صحت کاربر تایید شد</h3>
+
+  
+
+        {(() => {
+
+  
+
+           switch (appointment) {
+
+              case 'lawyer':
+
+
+      
+
+return (
+  <div>
+                        <h1>ورود به پنل وکالت
+                        </h1>
+                  
+                        <a href="http://localhost:3000/lawyer-app" rel="noreferrer">
+  برای ورود به پنل وکالت کلیک کنید.
+</a>
+
+
+</div>
+       );              
+                  
+                  
+              case 'secretary':
+
+            
+return (
+<div>
+                      <h1>ورود به پنل منشی
+                      </h1>
+                
+                      <a href="http://localhost:3000/clerk-app" rel="noreferrer">
+برای ورود به پنل منشی کلیک کنید.
+</a>
+
+
+</div>
+     ); 
+
+
+     case 'applicant':
+
+            
+      return (
+                    
+        <div
+        style={{
+         
+          display: 'flex',
+          justifyContent: 'Center',
+          alignItems: 'Center',
+          height: '100vh',
+         
+          
+          
         }}
       >
         
-          <h2 >
-        صحت کاربر تایید شد.
-        </h2>
+       <div 
+       style={{
         
-        </div>
-        </div>
-        );
+            
+            
+        
+    textAlign: 'center',    
+      
+        
+      }}
+    >
+    
+    
+    
+
+                      <h1>ورود به صفحه  ی اصلی
+                      </h1>
+                
+                      <a href="http://localhost:3000/homePage" rel="noreferrer">
+برای ورود به صفحه ی اصلی کلیک کنید.
+</a>
+
+
+</div>
+      </div>
+      ); 
+              
+                
+
+           }
+
   
+
+        })()}
+
+  
+
+    </div>
+
+  );
+        
+}
+
+
 
 
 
@@ -129,7 +224,7 @@ function Fnc() {
   
     
           
-  }
+  
 
 
     
@@ -173,7 +268,7 @@ const SignIn = () => {
 
 
   const getInitialState = () => {
-    const value = "موکل";
+    const value = "applicant";
     
     return value;
     
@@ -189,7 +284,9 @@ const SignIn = () => {
 function postdata() {
   axios.post('http://localhost:8000/login', {name,password})
  .then((response)=>{
-      setValue(response.member);
+      setValue(response.data['member']);
+        localStorage.setItem("user", JSON.stringify(response.data));
+      
     }).catch((error) => {
       if (error.response) {
         console.log(error.response);

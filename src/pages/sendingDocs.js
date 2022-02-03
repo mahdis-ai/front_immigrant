@@ -16,6 +16,7 @@ function App() {
   
   const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
+  const [user, setUser] = useState(false);
   const history = useHistory();
   const changeHandler = (event) => {
 
@@ -26,6 +27,8 @@ function App() {
 	};
 
 	const handleSubmission=(event) =>{
+    const  currentuser=JSON.parse(localStorage.getItem("user"));
+    if (currentuser){
     event.preventDefault();
     const formData = new FormData();
 		formData.append('FILES', selectedFile);
@@ -42,8 +45,9 @@ function App() {
       console.error('Error:', error);
 
     });
-
+  }
 	}
+
 
   return (
     
@@ -74,9 +78,9 @@ function App() {
 >
 
 
-<h1 style={{color: "#ffda74",marginTop:"150px"}}>ارسال مدارک</h1>
+<h1 style={{color: "#ffda74",marginTop:"20%"}}>ارسال مدارک</h1>
 <h5 style={{color: 'lightgray',marginTop: '30px'}}>تمام مدارک مهاجرتیت رو اسکن کن و همه رو تو یه فایل زیپ قرار بده و تو این صفحه ارسال کن</h5>
-<input style={{height:"70px",border:"10"}}type="file" name="file" onChange={changeHandler} />
+<input style={{height:"5%",border:"10",marginTop:"",marginBottom:"",marginLeft:"40%",marginRight:"50%",width:"%",display: 'block',}}type="file" name="file" onChange={changeHandler} />
 			{isFilePicked ? (
 
 				<div>

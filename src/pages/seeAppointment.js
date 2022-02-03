@@ -1,6 +1,12 @@
-import React from 'react';
-  
+import React, { useState ,useEffect } from 'react';
+import { Button} from 'react-bootstrap';
 const App = () => {
+  const [userloggedin , setuserloggedin]=useState(false);
+  const handleauth=()=>{
+  const  currentuser=JSON.parse(localStorage.getItem("user"));
+  if (currentuser){
+    setuserloggedin(true);}
+ };
   return (
     <div
     style={{
@@ -14,10 +20,23 @@ const App = () => {
     }}
   >
 
+<h1 style={{color: "lightgrey",fontSize:'50px'}}>مشاهده ی زمان سفارت</h1>
+{userloggedin ? (
 
+<div>
+  <p style={{color:"#FFFF00"}}> سفارت پادشاهی عمان در تهران - 1401/08/05 ساعت 8 صبح</p>
+</div>
 
+) : (
 
-    <h1 style={{color: "lightgrey",fontSize:'100px'}}>مشاهده ی زمان سفارت</h1>
+<p>click button to see your appointment</p>
+
+)}
+<Button 
+  onClick={handleauth}
+  size="lg"
+>Tap here
+</Button>
   </div>
   );
 };

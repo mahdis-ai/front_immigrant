@@ -277,10 +277,6 @@ const SignIn = () => {
   const [value, setValue] = useState(getInitialState);
 
   
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    
-  };
 function postdata() {
   axios.post('http://localhost:8000/login', {name,password})
  .then((response)=>{

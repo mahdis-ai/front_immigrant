@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import TextField from "@material-ui/core/TextField";
 import { Button} from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory ,Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from "axios";
-var Link = require('react-router').Link;
+//var Link = require('react-router').Link;
 // import { BrowserRouter as Router, Switch, RouteوRedirect } from 'react-router-dom';
 
 
@@ -22,11 +22,6 @@ function Fnc() {
   
     return (
   
-
-
-
-
-        
       <div style={{
                       
                           
@@ -47,7 +42,7 @@ function Fnc() {
   
              switch (appointment) {
   
-                case 'وکیل':
+                case 'lawyer':
 
 
         
@@ -66,7 +61,7 @@ return (
          );              
                     
                     
-                case 'منشی':
+                case 'secretary':
   
               
 return (
@@ -145,6 +140,11 @@ return (
   }
 
 
+
+        
+
+
+
     
 //   return(
     
@@ -187,7 +187,7 @@ const SignUp = () => {
   const [position,setPosition] = useState("");
 
   const getInitialState = () => {
-    const value = "موکل";
+    const value = "applicant";
     
     return value;
     
@@ -234,68 +234,67 @@ textAlign: 'center',
   }}
 >
 
+<h4 style={{display: 'block', fontSize:'30px', fontStyle:'normal', color: '#F2C74E'}}>ثبت نام</h4>
 
-      <h2>ثبت نام</h2>
+<h3 style={{marginTop: '30px',display: 'block', fontSize:'20px'}}>نام کاربری {name} </h3>
+
       <TextField
-    
+        style={{marginTop: '-10px'}}
         value={name}
         label="نام کاربری"
         onChange={(e) => {
           setName(e.target.value);
         }}
       />
-      <h3>نام کاربری: {name} </h3>
 
 
-      
+<h3 style={{marginTop: '20px',display: 'block', fontSize:'20px'}}>رمز {pass} </h3>
       <TextField
-   
+        style={{marginTop: '-20px'}}
         value={pass}
         label="رمز"
         onChange={(e) => {
           setPass(e.target.value);
         }}
       />
-      <h3>رمز: {pass} </h3>
 
 
+<h3 style={{marginTop: '20px',display: 'block', fontSize:'20px'}}>موبایل {mobile} </h3>
       <TextField
-  
+        style={{marginTop: '-20px'}}
         value={mobile}
         label="موبایل"
         onChange={(e) => {
           setMobile(e.target.value);
         }}
       />
-      <h3>موبایل: {mobile} </h3>
-
+ <h3 style={{marginTop: '20px',display: 'block', fontSize:'20px'}}>نوع ویزا {visatype} </h3>
       <TextField
-  
+        style={{marginTop: '-20px'}}
         value={visatype}
         label="نوع ویزا"
         onChange={(e) => {
           setVisatype(e.target.value);
         }}
       />
-      <h3>نوع ویزا: {visatype} </h3>
 
 
 
       
     
+<h3 style={{marginTop: '20px',display: 'block', fontSize:'20px'}}>نقش {position} </h3>
 <TextField
-
+        style={{marginTop: '-20px'}}
         value={position}
         label="نقش"
         onChange={(e) => {
           setPosition(e.target.value);
         }}
       />
-      <h3>نقش: {position} </h3>
 
 
       
-      <Button
+     {/* <Button
 
       
   onClick={() => {
@@ -311,10 +310,14 @@ textAlign: 'center',
   to='/homePage' activeStyle
 >
   تایید
-</Button>
-
-
-
+</Button>*/}
+<Link to="/sign-in" className="btn btn-primary" 
+  style={{marginTop: '20px',display: 'block'}}
+  onClick={() => {
+    postdata()
+    appointment = position;
+    globalVisaType=visatype;
+  }}>تایید</Link>
 
 
     </div>

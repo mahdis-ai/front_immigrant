@@ -16,11 +16,18 @@ const App = () => {
       alignItems: 'Center',
       height: '100vh',
       backgroundSize: 'cover',
-     
+      lineHeight: '20'
     }}
   >
+<div 
+     style={{
+      
+  textAlign: 'center',    
+    
+    }}
+>
 
-<h1 style={{color: "lightgrey",fontSize:'50px'}}>مشاهده ی زمان سفارت</h1>
+<h1 style={{color: "lightgrey",fontSize:'50px',marginTop:"200px",color: '#F2C74E'}}>مشاهده ی زمان سفارت</h1>
 {userloggedin ? (
 
 <div>
@@ -29,15 +36,17 @@ const App = () => {
 
 ) : (
 
-<p>click button to see your appointment</p>
+<p style={{color: 'lightgray',marginTop: '70px',display: 'block'}}>click button to see your appointment</p>
 
 )}
 <Button 
+  style={{marginTop: '-500px'}}
   onClick={handleauth}
   size="lg"
 >Tap here
 </Button>
   </div>
+    </div>
   );
 };
   

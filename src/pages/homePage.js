@@ -43,7 +43,7 @@ function gethome() {
 
 
 
-      <h1 style={{color:"lightseagreen",fontSize:'100px'}}>موسسه ی مهاجرتی اکسپرس</h1>
+<h1 style={{color:"orange",fontSize:'90px'}}>موسسه ی مهاجرتی اکسپرس</h1>
     </div>
   );
 };

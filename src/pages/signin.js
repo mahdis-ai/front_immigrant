@@ -1,16 +1,15 @@
 import React, { useState ,useEffect } from 'react';
 import TextField from "@material-ui/core/TextField";
 import { Button} from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from "axios";
-var Link = require('react-router').Link;
-
+import HomePage from './homePage';
 // import { BrowserRouter as Router, Switch, RouteوRedirect } from 'react-router-dom';
 
 
 
-
+//var Link = require('react-router').Link;
 
 var appointment ="";
 
@@ -23,126 +22,36 @@ function Fnc() {
   return (
 
 
-
-
-
-      
-    <div style={{
-                    
-                        
-                        
-                    
-      textAlign: 'center',    
-      marginTop: "15%",
-          
-        }}>
-
-        <h3>صحت کاربر تایید شد</h3>
-
-  
-
-        {(() => {
-
-  
-
-           switch (appointment) {
-
-              case 'lawyer':
-
-
-      
-
-return (
-  <div>
-                        <h1>ورود به پنل وکالت
-                        </h1>
-                  
-                        <a href="http://localhost:3000/lawyer-app" rel="noreferrer">
-  برای ورود به پنل وکالت کلیک کنید.
-</a>
-
-
-</div>
-       );              
-                  
-                  
-              case 'secretary':
-
+    <div
+    style={{
+     
+      display: 'flex',
+      justifyContent: 'Center',
+      alignItems: 'Center',
+      height: '100vh',
             
-return (
-<div>
-                      <h1>ورود به پنل منشی
-                      </h1>
-                
-                      <a href="http://localhost:3000/clerk-app" rel="noreferrer">
-برای ورود به پنل منشی کلیک کنید.
-</a>
-
-
-</div>
-     ); 
-
-
-     case 'applicant':
-
-            
-      return (
-                    
-        <div
-        style={{
-         
-          display: 'flex',
-          justifyContent: 'Center',
-          alignItems: 'Center',
-          height: '100vh',
-         
-          
-          
-        }}
-      >
-        
-       <div 
-       style={{
-        
-            
-            
-        
-    textAlign: 'center',    
-      
-        
-      }}
-    >
+    }}
+  >
     
-    
-    
-
-                      <h1>ورود به صفحه  ی اصلی
-                      </h1>
-                
-                      <a href="http://localhost:3000/homePage" rel="noreferrer">
-برای ورود به صفحه ی اصلی کلیک کنید.
-</a>
-
-
-</div>
-      </div>
-      ); 
-              
-                
-
-           }
-
+   <div 
+   style={{
+      
+textAlign: 'center',    
   
-
-        })()}
-
+  }}
+>
   
-
-    </div>
-
+    <h2 >
+  صحت کاربر تایید شد.
+  </h2>
+  
+  </div>
+  </div>
   );
-        
 }
+
+
+
 
 
 
@@ -313,7 +222,8 @@ textAlign: 'center',
   }}
 >
 
-
+    <h4 style={{display: 'block',fontSize:'40px', fontStyle:'normal'}}>ورود </h4>
+    <h3 style={{marginTop: '50px',display: 'block', fontSize:'20px'}}>نام کاربری {name} </h3>
      
       <TextField
         value={name}
@@ -322,10 +232,10 @@ textAlign: 'center',
           setName(e.target.value);
         }}
       />
-      <h3>نام کاربری: {name} </h3>
+    
 
 
-      
+      <h3 style={{marginTop: '20px',display: 'block', fontSize:'20px'}}>رمز {password} </h3>
       <TextField
         value={password}
         label="رمز"
@@ -333,12 +243,12 @@ textAlign: 'center',
           setPassword(e.target.value);
         }}
       />
-      <h3>رمز: {password} </h3>
+
 
 
 
       
-      <Button
+  {/*    <Button
 
       
   onClick={() => {
@@ -354,11 +264,16 @@ textAlign: 'center',
  //////////////////////////////// to='/homePage' activeStyle
 >
   تایید
-</Button>
+</Button>*/}
 
 
 
-
+<Link to="/HomePage" className="btn btn-primary" 
+  style={{marginTop: '30px',display: 'block'}}
+  onClick={() => {
+    postdata()
+    appointment = value;
+  }}>تایید</Link>
 
     </div>
     </div>

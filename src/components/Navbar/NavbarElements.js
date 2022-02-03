@@ -14,7 +14,7 @@ export const Nav = styled.nav`
 `;
   
 export const NavLink = styled(Link)`
-  color: #808080;
+  color: #F1F5F5;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -22,7 +22,7 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   &.active {
-    color: #000000;
+    color: #F2C74E;
   }
 `;
   
@@ -68,7 +68,7 @@ export const NavBtn = styled.nav`
   
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #808080;
+  background: #4EDFF2;
   padding: 10px 22px;
   color: #000000;
   outline: none;

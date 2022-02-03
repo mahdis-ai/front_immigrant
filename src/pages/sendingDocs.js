@@ -80,19 +80,10 @@ function App() {
 
 <h1 style={{color: "#ffda74",marginTop:"20%"}}>ارسال مدارک</h1>
 <h5 style={{color: 'lightgray',marginTop: '30px'}}>تمام مدارک مهاجرتیت رو اسکن کن و همه رو تو یه فایل زیپ قرار بده و تو این صفحه ارسال کن</h5>
-<input style={{height:"5%",border:"10",marginTop:"",marginBottom:"",marginLeft:"40%",marginRight:"50%",width:"%",display: 'block',}}type="file" name="file" onChange={changeHandler} />
-			{isFilePicked ? (
-
-				<div>
-					<p style={{color:"#FFFF00",marginBottom:"2px"}}>Filename: {selectedFile.name}</p>
-				</div>
-
-			) : (
-
-				<p>Select a file to show details</p>
-
-			)}
+<input style={{height:"40px",border:"10",marginTop:"120px",marginLeft:"325px",width:"%",display: 'block',}}type="file" name="file" onChange={changeHandler} />
+<h6 style={{color: '#ffda74',marginTop: '10px'}}>Select a file to submit</h6>
       <Button 
+      style={{marginTop: '80px',marginLeft: '325px',display: 'block'}}
   onClick={handleSubmission}
   size="lg"
 >submit

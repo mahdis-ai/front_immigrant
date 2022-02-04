@@ -17,7 +17,6 @@ var appointment ="";
 
 
 
-
 function Fnc() {
   return (
 
@@ -174,23 +173,25 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
+  const [url ,setUrl] = useState("/HomePage");
+  const history = useHistory();
 
-
-  const getInitialState = () => {
-    const value = "applicant";
-    
-    return value;
-    
-  };
-
-  const [value, setValue] = useState(getInitialState);
+  const [value, setValue] = useState("");
 
   
 function postdata() {
   axios.post('http://localhost:8000/login', {name,password})
  .then((response)=>{
-      setValue(response.data['member']);
         localStorage.setItem("user", JSON.stringify(response.data));
+        console.log(response.data['member']);
+        setValue(response.data['member']);
+        if(response.data['member']==="lawyer"){
+          setUrl("/lawyer-app");
+        }else if(response.data['member']==="secretary"){
+          setUrl("/clerk-app");
+        }else{
+          setUrl("/HomePage")
+        }
       
     }).catch((error) => {
       if (error.response) {
@@ -198,7 +199,9 @@ function postdata() {
         console.log(error.response.status);
         console.log(error.response.headers);
         }
-    })}
+    
+    })
+    }
 
   return (
     <div
@@ -249,7 +252,6 @@ textAlign: 'center',
 
       
   {/*    <Button
-
       
   onClick={() => {
     // const txt = `پرداخت موفقیت آمیز بود .نوبت شما : ${value}`;
@@ -260,7 +262,6 @@ textAlign: 'center',
    
     ReactDOM.render(<Fnc />, document.getElementById('root'));
   }}
-
  //////////////////////////////// to='/homePage' activeStyle
 >
   تایید
@@ -268,7 +269,7 @@ textAlign: 'center',
 
 
 
-<Link to="/HomePage" className="btn btn-primary" 
+<Link to={url} className="btn btn-primary"
   style={{marginTop: '30px',display: 'block'}}
   onClick={() => {
     postdata()

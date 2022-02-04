@@ -1,3 +1,4 @@
+
 import React , { useState ,useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button} from 'react-bootstrap';
@@ -81,12 +82,12 @@ function App() {
 <h1 style={{color: "#ffda74",marginTop:"20%"}}>ارسال مدارک</h1>
 <h5 style={{color: 'lightgray',marginTop: '30px'}}>تمام مدارک مهاجرتیت رو اسکن کن و همه رو تو یه فایل زیپ قرار بده و تو این صفحه ارسال کن</h5>
 <input style={{height:"40px",border:"10",marginTop:"120px",marginLeft:"325px",width:"%",display: 'block',}}type="file" name="file" onChange={changeHandler} />
-<h6 style={{color: '#ffda74',marginTop: '10px'}}>Select a file to submit</h6>
+<h6 style={{color: '#ffda74',marginTop: '10px'}}>یک فایل برای ارسال انتخاب کنید</h6>
       <Button 
       style={{marginTop: '80px',marginLeft: '325px',display: 'block'}}
   onClick={handleSubmission}
   size="lg"
->submit
+>ارسال
 </Button>
 
 {/* <p>{`نوبت شما : ${appointment}`}</p> */}

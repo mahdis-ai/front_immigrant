@@ -182,16 +182,19 @@ const SignIn = () => {
 function postdata() {
   axios.post('http://localhost:8000/login', {name,password})
  .then((response)=>{
-        localStorage.setItem("user", JSON.stringify(response.data));
-        console.log(response.data['member']);
-        setValue(response.data['member']);
-        if(response.data['member']==="lawyer"){
+        setValue(response.data.member);
+        
+        console.log(response.data.member.value);
+        console.log(value);
+        if(response.data.member==="lawyer"){
           setUrl("/lawyer-app");
-        }else if(response.data['member']==="secretary"){
+        }else if(response.data.member==="secretary"){
           setUrl("/clerk-app");
         }else{
-          setUrl("/HomePage")
+          setUrl("/HomePage");
         }
+        localStorage.setItem("user", JSON.stringify(response.data));
+        history.push(url);
       
     }).catch((error) => {
       if (error.response) {
@@ -269,12 +272,12 @@ textAlign: 'center',
 
 
 
-<Link to={url} className="btn btn-primary"
+<Button 
   style={{marginTop: '30px',display: 'block'}}
   onClick={() => {
     postdata()
     appointment = value;
-  }}>تایید</Link>
+  }}>تایید</Button>
 
     </div>
     </div>

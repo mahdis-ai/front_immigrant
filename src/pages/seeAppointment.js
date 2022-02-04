@@ -36,7 +36,7 @@ const App = () => {
 
 ) : (
 
-<p style={{color: 'lightgray',marginTop: '70px',display: 'block'}}>click button to see your appointment</p>
+<p style={{color: 'lightgray',marginTop: '70px',display: 'block'}}>برای دیدن وقت سفارت کلیک کنید</p>
 
 )}
 <Button 
